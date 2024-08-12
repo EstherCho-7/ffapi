@@ -5,6 +5,7 @@ import pandas as pd
 
 app = FastAPI()
 
+#df=pd.read_parquet("/home/esthercho/code/ffapi/data")
 
 @app.get("/")
 def read_root():
