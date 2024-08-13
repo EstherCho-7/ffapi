@@ -5,7 +5,7 @@ import pandas as pd
 
 app = FastAPI()
 
-#df=pd.read_parquet("/home/esthercho/code/ffapi/data")
+df=pd.read_parquet("/home/esthercho/code/ffapi/data")
 
 @app.get("/")
 def read_root():
@@ -14,7 +14,7 @@ def read_root():
 
 @app.get("/sample")
 def sample_data(movie_cd: int):
-    df=pd.read_parquet("/home/esthercho/code/ffapi/data")
+#    df=pd.read_parquet("/home/esthercho/code/ffapi/data")
     sample_df=df.sample(n=5)
     r=sample_df.to_dict(orient='records')
     
@@ -25,7 +25,7 @@ def sample_data(movie_cd: int):
 
 @app.get("/movie/{movie_cd}")
 def movie_meta(movie_cd: str):
-    df=pd.read_parquet("/home/esthercho/code/ffapi/data")
+#    df=pd.read_parquet("/home/esthercho/code/ffapi/data")
     meta_df = df[df['movieCd']== movie_cd]
     if meta_df.empty:
         raise HTTPException(status_code=404, detail="영화를 찾을 수 없습니다.")
