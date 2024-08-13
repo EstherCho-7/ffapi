@@ -27,6 +27,10 @@ def req(movie_cd="20156962"):
     data=r.json()
     nations=data['movieInfoResult']['movieInfo']['nations']
     nationNm = nations[0]['nationNm'] if nations else '정보 없음'
+    if nationNm=='한국':
+        nationNm = 'K'
+    else:
+        nationNm = 'F'
 
     return nationNm
 
